@@ -5,15 +5,30 @@
 <%= select_tag(:from_airport, options_for_select(@airport_codes)) %>
 
 <%= label_tag("To:") %>
-<%= select_tag(:from_airport, options_for_select(@airport_codes)) %>
+<%= select_tag(:to_airport, options_for_select(@airport_codes)) %>
 
 <%= label_tag("Passengers:") %>
 <%= select_tag(:passengers, options_for_select(1..4)) %>
 
 <%= label_tag("Available dates:") %>
-<%= select_tag "flight_date", options_from_collection_for_select(Flight.get_starts, 'start', :flight_date_formatted) %>
+<%= select_tag "flight_date", options_for_select(@flight_dates) %>
 <br>
 <%= submit_tag 'find flights' %>
+<%end%>
+<br>
+
+<% if !@flights.empty? %>
+<h2>Available Flights</h2>
+<%= form_for(:booking, url: bookings_new_path) do |f|%>
+	<% @flights.each_entry do |flight| %>
+		<li><%= f.radio_button :flight_id, flight.id %>
+		<%= f.label :flight, flight.inspect %></li>
+
+	<%end%>
+	<%= f.hidden_field :passengers, :value => params[:passengers] %>
+	<%= f.submit 'select flight' %>
 
 
-<% end %>
+<%end%>
+
+<%end%>

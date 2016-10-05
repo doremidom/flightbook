@@ -11,5 +11,7 @@ Airport.create!(code: 'SFO')
 Airport.create!(code: 'JFK')
 
 
-Flight.create!(from_airport_id: 1, to_airport_id: 2, start: 3.days.from_now, duration: 120)
-Flight.create!(from_airport_id: 2, to_airport_id: 1, start: 2.days.from_now, duration: 120)
+Flight.create!(from_airport_id: 1, to_airport_id: 2, date: Date.tomorrow, departure_time: 1530, duration: 120)
+Flight.create!(from_airport_id: 2, to_airport_id: 1, date: Date.tomorrow, departure_time: 0530, duration: 120)
+Flight.create!(from_airport_id: 1, to_airport_id: 2, date: Date.tomorrow, departure_time: 1730, duration: 120)
+Flight.create!(from_airport_id: 2, to_airport_id: 1, date: Date.tomorrow, departure_time: 0230, duration: 120)

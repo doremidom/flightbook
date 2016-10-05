@@ -1,0 +1,8 @@
+<h1>Confirmation Page</h1>
+
+<h2>Flight Information</h2>
+From: <%= @flight_info.from_airport.code %> To: <%= @flight_info.to_airport.code %>
+Date: <%= @flight_info.date.strftime("%B %d, %Y") %>
+
+<h2>Passenger Information</h2>
+Name: <%=@passenger_info.id %> Email: <%=@passenger_info.email%>

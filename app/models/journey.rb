@@ -1,2 +1,0 @@
-class Journey < ApplicationRecord
-end

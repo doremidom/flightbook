@@ -1,0 +1,30 @@
+
+<h1> Booking Page </h1>
+<h2>Flight Information </h2>
+<h3>From: <%= @flight_info.from_airport.code %> To: <%= @flight_info.to_airport.code %>
+Date: <%= @flight_info.date.strftime("%B %d, %Y") %></h3>
+
+<%= form_for(:booking, url: @booking) do |f|%>
+
+<%= f.hidden_field :flight_id, :value => @flight_info.id %>
+
+<h2> Passenger Information</h2>
+<% @passenger_list.each do |passenger| %>
+	<%= fields_for 'passengers[]', passenger do |y| %>
+		<b> Passenger </b>
+		<%= y.label :name %>
+		<%= y.text_field :name %>
+
+		<%= y.label :email %>
+		<%= y.text_field :email %>
+		<br>
+	<%end%>
+<%end%>
+
+
+<%= submit_tag 'submit booking' %>
+<%end%>
+	
+
+
+
