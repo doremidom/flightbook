@@ -1,5 +1,5 @@
 class Passenger < ApplicationRecord
-	has_many :bookings
+	belongs_to :booking
 
 	validates_uniqueness_of :email
 

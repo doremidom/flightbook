@@ -31,14 +31,5 @@ class FlightsController < ApplicationController
   	flight_dates = Flight.all.map{ |flight| [flight.date.strftime("%m/%d/%Y"), flight.date  ] }.uniq
   end
 
-  def flight_months
-  end
-
-  def flight_days
-  end
-
-  def flight_years
-  end
-
 
 end

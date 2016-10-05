@@ -1,28 +1,26 @@
 
 <h1> Booking Page </h1>
 <h2>Flight Information </h2>
-<h3>From: <%= @flight_info.from_airport.code %> To: <%= @flight_info.to_airport.code %>
-Date: <%= @flight_info.date.strftime("%B %d, %Y") %></h3>
+<h3>From: <%= @flight.from_airport.code %> To: <%= @flight.to_airport.code %>
+Date: <%= @flight.date.strftime("%B %d, %Y") %></h3>
 
-<%= form_for(:booking, url: @booking) do |f|%>
+<%= form_for(@booking) do |f|%>
 
-<%= f.hidden_field :flight_id, :value => @flight_info.id %>
+<%= f.hidden_field :flight_id, :value => @flight.id %>
 
 <h2> Passenger Information</h2>
-<% @passenger_list.each do |passenger| %>
-	<%= fields_for 'passengers[]', passenger do |y| %>
-		<b> Passenger </b>
-		<%= y.label :name %>
-		<%= y.text_field :name %>
+<%= f.fields_for :passengers do |passenger_fields| %>
+		<b> Passenger <%=passenger_fields.index+1%></b>
+		<%= passenger_fields.label :name %>
+		<%= passenger_fields.text_field :name %>
 
-		<%= y.label :email %>
-		<%= y.text_field :email %>
+		<%= passenger_fields.label :email %>
+		<%= passenger_fields.text_field :email %>
 		<br>
 	<%end%>
-<%end%>
 
+<%= f.submit 'submit booking' %>
 
-<%= submit_tag 'submit booking' %>
 <%end%>
 	
 

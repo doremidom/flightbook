@@ -5,4 +5,7 @@ From: <%= @flight_info.from_airport.code %> To: <%= @flight_info.to_airport.code
 Date: <%= @flight_info.date.strftime("%B %d, %Y") %>
 
 <h2>Passenger Information</h2>
-Name: <%=@passenger_info.id %> Email: <%=@passenger_info.email%>
+<% @passengers.each_entry do |passenger| %>
+<ul>Name: <%=passenger.name %> Email: <%=passenger.email%></ul>
+<%end%>
+
